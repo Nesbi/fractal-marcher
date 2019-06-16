@@ -130,7 +130,7 @@ class EchoSphere{
      * @param {Point} point 
      */
     distance_estimator(point){
-        return Math.max(mod(point.subtract(this.center).norm(),this.distance) - this.radius, 0); 
+        return Math.max((point.subtract(this.center).norm()%this.distance) - this.radius, 0); 
     }
 }
 

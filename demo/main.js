@@ -25,7 +25,7 @@ window.addEventListener("load", () => {
 
     const shift = () => {
         do_render = true;
-        marcher.iter = move;
+        marcher.iter = 0;
         marcher.shift = move;
     }
 
@@ -66,7 +66,7 @@ window.addEventListener("load", () => {
     // Init render loop
     var renderloop = function(){
         if(do_render){
-            if(marcher.iter == 1){
+            if(marcher.iter >= move){
                 do_render = false;
             }
             marcher.render(democamera, demoscene);

@@ -26,7 +26,8 @@ class Marcher{
         this.canvas = canvas;
         this.context = canvas.getContext("2d");
         this.shift = 10;
-        this.iter = 10;
+        this.iter = 0;
+        this.iter_delta = 1;
     }
 
     /**
@@ -45,12 +46,12 @@ class Marcher{
 
         // Iterate through all pixels in the image
         // (Uses while(--x) instead of for(let x = 0; x < width;x++) out of performance reasons)
-        let x_area = Math.floor(height / this.iter);
-        while(--x_area - (this.shift - this.iter)){
-            const x = x_area * this.iter; 
-            let y_area =  Math.floor(width / this.iter);
-            while(--y_area - (this.shift - this.iter)){
-                const y = y_area * this.iter; 
+        let x_area = Math.floor(height * this.iter / this.shift);
+        while(--x_area+1){
+            const x = x_area * (this.shift - this.iter); 
+            let y_area =  Math.floor(width * this.iter / this.shift);
+            while(--y_area+1){
+                const y = y_area * (this.shift - this.iter); 
                 // A ray staring from the camera through the pixel plane
                 const ray = camera_direction.add(new Point(x-width/2,y-height/2,0)).normalize();
 
@@ -86,9 +87,9 @@ class Marcher{
                     this.context.fillStyle = `rgba(0,0,0,1)`;
                 }
                 // Draw pixel
-                this.context.fillRect(x,y,this.iter,this.iter);
+                this.context.fillRect(x,y,(this.shift - this.iter),(this.shift - this.iter));
             }
         } 
-        this.iter = (this.iter == 1) ? this.shift : (this.iter - 1);
+        this.iter = (this.iter >= this.shift) ? 0 : (this.iter + this.iter_delta);
     }
 }

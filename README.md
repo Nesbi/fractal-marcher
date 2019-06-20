@@ -15,14 +15,14 @@ FAQ
 Simple: [CodeParade](https://www.youtube.com/watch?v=svLzmFuSBhk)
 Nice video, nice channel.
 
-### Why in JavaScript?
-Dunno. Fun?
+### Why in pure JavaScript?
+Dunno. Fun? 
+
+But in all seriousness it's about the challenge to get something so resource entensive running despite the hardware and language limitations.
 
 ### Is the engine fast?
 Hell no. 3-4 fps at 400x400px.
+
 (Does have low level rendering for movement)
 
-The fractals are not the reason the frame rate tanks so bad. (JS is…)
-
-But I do want to enhance the performance in the future. 
-Maybe by outsourcing the resource heavy load to wasm.
+A special focus does lay on making it usable despite those limitations.

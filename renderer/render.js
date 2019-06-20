@@ -61,18 +61,24 @@ class Marcher{
                 while(path_length < max_path){
                     const point = camera_center.add(ray.multiply(path_length)); 
                     // Estimate all distances and return the object with the lowest distance and the distance
-                    const [object, distance] = scene.objects
+                    const distances = scene.objects
                                         .map(o => [o,o.distance_estimator(point)])
-                                        .sort((a,b) => b[1]-a[1])
-                                        .pop();
+                                        .sort((a,b) => b[1]-a[1]).filter(o => o[1] >= 0)
+                                        
 
-                    // Check for hit
-                    if(distance < min_distance){
-                        hit_object = object;
-                        hit_point = point;
+                    if(distances.length > 0) {
+                        const [object, distance] = distances.pop();
+
+                        // Check for hit
+                        if(distance < min_distance){
+                            hit_object = object;
+                            hit_point = point;
+                            break;
+                        }
+                        path_length = Math.min(max_path,path_length+distance);
+                    } else {
                         break;
                     }
-                    path_length = Math.min(max_path,path_length+distance);
                 }
 
                 // Colorize the pixel

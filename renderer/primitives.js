@@ -69,10 +69,11 @@ class Sphere{
 
 /**
  * A infinite array of spheres which are specified by a distance between another
+ * TODO still buggy and only works with a broken modulo
  */
 class InfinitySphere{
-    constructor(center, radius, distance){
-        this.center = center;
+    constructor(radius, distance){
+        this.center = new Point(-20,-20,0);
         this.radius = radius;
         this.distance = distance;
     }
@@ -101,8 +102,7 @@ class InfinitySphere{
      */
     _to_infinity_point(point){
         const space = this.radius*this.distance;
-        const infinity_point = new Point(mod(point.x,space),mod(point.y,space),mod(point.z,space))
-        return infinity_point;
+        return new Point(broken_mod(point.x,space),broken_mod(point.y,space),broken_mod(point.z,space))
     }
 }
 
@@ -153,7 +153,15 @@ class Box{
  * @param {*} x 
  * @param {*} y 
  */
-function mod(x,y) {
+function broken_mod(x,y) {
     let m = x % y;
     return (m > 0) ? m - y : m;
+}
+function mod(x,y) {
+    if(x < 0){
+        const t = Math.abs(x) > y ? Math.ceil(Math.abs(x) / y) : 1;
+        return (x+(t*y)) % y;
+    } else {
+        return x % y;
+    }
 }

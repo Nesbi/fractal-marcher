@@ -8,7 +8,8 @@ window.addEventListener("load", () => {
     let = do_render = true;
     // Demo scenes and camera
     //const demoscene = new Scene([new EchoSphere(new Point(-35,-35,0),20,5000),new EchoSphere(new Point(0,0,0),40,5000),new EchoSphere(new Point(35,35,0),20,5000)],[new Point(100,100,500)]);
-    const demoscene = new Scene([new InfinitySphere(new Point(-20,-20,0),20,5)],[new Point(100,100,100)]);
+    const demoscene = new Scene([new InfinitySphere(20,5)],[new Point(100,100,100)]);
+    //const demoscene = new Scene([new Sphere(new Point(-20,-20,0),20)],[new Point(100,100,100)]);
     const democamera = new Camera(new Point(0,0,-200),new Point(0,0,200));
 
     //// Navigation  (Rotating the camera is currently not supported)

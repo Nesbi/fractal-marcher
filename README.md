@@ -20,11 +20,9 @@ Dunno. Fun?
 
 ### Is the engine fast?
 Hell no. 3-4 fps at 400x400px.
+(Does have low level rendering for movement)
 
 The fractals are not the reason the frame rate tanks so bad. (JS is…)
 
 But I do want to enhance the performance in the future. 
 Maybe by outsourcing the resource heavy load to wasm.
-
-Or I'll ignore the realtime speed and only use it to render gifs.
-

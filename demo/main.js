@@ -5,7 +5,7 @@ window.addEventListener("load", () => {
     const marcher = new Marcher(document.getElementById("window"));
     const move = 10;
 
-    let = do_render = false;
+    let = do_render = true;
     // Demo scenes and camera
     //const demoscene = new Scene([new EchoSphere(new Point(-35,-35,0),20,5000),new EchoSphere(new Point(0,0,0),40,5000),new EchoSphere(new Point(35,35,0),20,5000)],[new Point(100,100,500)]);
     const demoscene = new Scene([new InfinitySphere(new Point(-20,-20,0),20,5)],[new Point(100,100,100)]);
